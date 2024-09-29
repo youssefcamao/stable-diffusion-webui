@@ -281,6 +281,17 @@ prepare_tcmalloc() {
     fi
 }
 
+if [[ -f "setup_sd.sh" ]]; then
+    printf "\n%s\n" "${delimiter}"
+    printf "Running Stable Diffusion setup script"
+    printf "\n%s\n" "${delimiter}"
+    source setup_sd.sh
+else
+    printf "\n%s\n" "${delimiter}"
+    printf "setup_sd.sh not found. Skipping Stable Diffusion setup."
+    printf "\n%s\n" "${delimiter}"
+fi
+
 KEEP_GOING=1
 export SD_WEBUI_RESTART=tmp/restart
 while [[ "$KEEP_GOING" -eq "1" ]]; do
